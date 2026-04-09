@@ -4,14 +4,17 @@ import Dashboard from "./components/Dashboard";
 import Projects from "./components/Projects";
 import KanbanBoard from "./components/KanbanBoard";
 import Settings from "./components/Settings";
-import { GithubProvider } from "./context/GithubContext";
+import { GithubProvider, useGithub } from "./context/GithubContext";
+import Landing from "./components/Landing";
 import "./App.css";
-
-export default function App() {
+function AppContent() {
   const [activePage, setActivePage] = useState("dashboard");
+  const { user, setUser } = useGithub();
 
   return (
-    <GithubProvider>
+    !user ? (
+      <Landing onLogin={(userData) => setUser(userData)} />
+    ) : (
       <div className="app">
         <Sidebar activePage={activePage} setActivePage={setActivePage} />
         <main className="main-content">
@@ -21,6 +24,13 @@ export default function App() {
           {activePage === "settings" && <Settings />}
         </main>
       </div>
+    )
+  );
+}
+export default function App() {
+  return (
+    <GithubProvider>
+      <AppContent />
     </GithubProvider>
   );
 }

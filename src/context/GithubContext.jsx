@@ -99,7 +99,7 @@ if (!token) {
 
   return (
     <GithubContext.Provider value={{
-      token, user, repos, loading, error,
+      token, user,setUser, repos, loading, error,
       kanbanProjects, stats,
       saveToken, clearToken, fetchRepos,
       updateKanbanProject, addKanbanProject, removeKanbanProject,
