@@ -16,7 +16,6 @@ DevBoard is a modern developer dashboard that helps users manage GitHub reposito
 - Landing page for better onboarding  
 
 ---
-
 ## ⚙️ How It Works
 
 1. Users visit the landing page and get an overview of the platform.  
